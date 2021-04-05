@@ -1,0 +1,134 @@
+{
+  "categories": [
+    {
+      "id": 0,
+      "name": "Pizza",
+      "image": "https://www.flaticon.com/svg/vstatic/svg/1384/1384676.svg?token=exp=1617615001~hmac=cd5aadc851e37fcb54523a6c0f38024b"
+    },
+    {
+      "id": 1,
+      "name": "Burger",
+      "image": "https://www.flaticon.com/svg/vstatic/svg/878/878052.svg?token=exp=1617539497~hmac=fa7e1b1813a065cfe078ef22b6fbdd9f"
+    },
+    {
+      "id": 2,
+      "name": "Hotdog",
+      "image": "https://www.flaticon.com/svg/vstatic/svg/1624/1624711.svg?token=exp=1617615032~hmac=b4a91d90c91c1798448b67103ac10a00"
+    },
+    {
+      "id": 3,
+      "name": "Taco",
+      "image": "https://www.flaticon.com/svg/vstatic/svg/189/189149.svg?token=exp=1617615051~hmac=1cf05c7fa1fbbc524ddc442ee667647e"
+    },
+    {
+      "id": 4,
+      "name": "Snack",
+      "image": "https://www.flaticon.com/svg/vstatic/svg/3050/3050251.svg?token=exp=1617615085~hmac=76df039e83de7abf1ee3b1b9317a5b21"
+    },
+    {
+      "id": 5,
+      "name": "Drink",
+      "image": "https://www.flaticon.com/svg/vstatic/svg/3165/3165589.svg?token=exp=1617615103~hmac=4e956f840247b7587e1145f4923061f7"
+    }
+  ],
+  "food": [
+    {
+      "id": 0,
+      "name": "Mushroom Pizza",
+      "price": 7.23,
+      "image": "http://pngimg.com/uploads/pizza/pizza_PNG44092.png",
+      "categoryId": 0
+    },
+    {
+      "id": 1,
+      "name": "Pepperoni Pizza",
+      "price": 9.55,
+      "image": "http://pngimg.com/uploads/pizza/pizza_PNG44068.png",
+      "categoryId": 0
+    },
+    {
+      "id": 2,
+      "name": "Mexican Pizza",
+      "price": 6.55,
+      "image": "http://pngimg.com/uploads/pizza/pizza_PNG44066.png",
+      "categoryId": 0
+    },
+    {
+      "id": 3,
+      "name": "Hawaiian Pizza",
+      "price": 8.55,
+      "image": "http://pngimg.com/uploads/pizza/pizza_PNG44059.png",
+      "categoryId": 0
+    },
+    {
+      "id": 4,
+      "name": "Marben Burger",
+      "price": 7.25,
+      "image": "https://freepngimg.com/thumb/burger/6-2-burger-png-image.png",
+      "categoryId": 1
+    },
+    {
+      "id": 5,
+      "name": "Union Burger",
+      "price": 4.75,
+      "image": "https://freepngimg.com/thumb/burger/22388-5-burger-food.png",
+      "categoryId": 1
+    },
+    {
+      "id": 6,
+      "name": "Golden Star Burger",
+      "price": 12.75,
+      "image": "https://freepngimg.com/thumb/burger/22501-3-shack-burger.png",
+      "categoryId": 1
+    },
+    {
+      "id": 7,
+      "name": "Michigan Hotdog",
+      "price": 8.75,
+      "image": "http://pngimg.com/uploads/hot_dog/hot_dog_PNG10232.png",
+      "categoryId": 2
+    },
+    {
+      "id": 8,
+      "name": "Italian Hotdog",
+      "price": 6.75,
+      "image": "https://static.wixstatic.com/media/2cd43b_a62f08f341744535b7de05a1a0b280c8~mv2.png/v1/fill/w_640,h_420,fp_0.50_0.50,q_95/2cd43b_a62f08f341744535b7de05a1a0b280c8~mv2.png",
+      "categoryId": 2
+    },
+    {
+      "id": 9,
+      "name": "Cazo Taco",
+      "price": 13.75,
+      "image": "http://www.freepngclipart.com/download/taco/52869-food-junk-bell-fast-taco-png-file-hd.png",
+      "categoryId": 3
+    },
+    {
+      "id": 10,
+      "name": "Bug Taco",
+      "price": 12.75,
+      "image": "http://www.freepngclipart.com/download/taco/52869-food-junk-bell-fast-taco-png-file-hd.png",
+      "categoryId": 3
+    },
+    {
+      "id": 11,
+      "name": "Potato",
+      "price": 12.75,
+      "image": "https://lh3.googleusercontent.com/proxy/0inqVuJbJHp5AUKGNlokiNQikjsFeFo5Qo7XinQmLicuq4j0TSjuw90rG4L5-AmekkwDnMF2ngi4ja-EYKAUdCDvLFvVOLNPtzIzj3I9TTSYS6qhsNBjzeyQvF8",
+      "categoryId": 4
+    },
+    {
+      "id": 12,
+      "name": "Coca Cola",
+      "price": 3.75,
+      "image": "http://pngimg.com/uploads/cocacola/cocacola_PNG24.png",
+      "categoryId": 5
+    },
+    {
+      "id": 13,
+      "name": "Cocktail",
+      "price": 6.75,
+      "image": "https://freepikpsd.com/wp-content/uploads/2020/10/Cocktail-Drink-PNG-Free-Image.png",
+      "categoryId": 5
+    }
+  ]
+}
