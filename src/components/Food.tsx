@@ -22,6 +22,10 @@ const Food = () => {
     categoriesStore.addItemToCart(obj);
   };
 
+  setInterval(() => {
+    categoriesStore.getFood(categoriesStore.categoryId, categoriesStore.searchValue);
+  }, 300000);
+
   React.useEffect(() => {
     categoriesStore.getFood(categoriesStore.categoryId, categoriesStore.searchValue);
   }, [categoriesStore, categoriesStore.searchValue]);
