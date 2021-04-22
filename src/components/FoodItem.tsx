@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { useObserver } from 'mobx-react-lite';
+import { FoodStoreType } from '../types/types';
+
 import plusSvg from '../assets/img/plus.svg';
 import fireSvg from '../assets/img/fire.svg';
-import { useObserver } from 'mobx-react-lite';
-import { useRootStore } from '../store/RootState.Context';
-import { FoodStoreType } from '../store/CategoryStore';
 
 const FoodItemWrapper = styled.div`
   position: relative;
@@ -91,10 +91,6 @@ const FoodItemIcon = styled.div`
 `;
 
 interface IFoodItem {
-  // name: string;
-  // id: number;
-  // price: number;
-  // image: string;
   item: FoodStoreType;
   onAddToCart: any;
 }

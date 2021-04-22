@@ -1,9 +1,10 @@
-import { useObserver } from 'mobx-react-lite';
 import React from 'react';
+import { useObserver } from 'mobx-react-lite';
 import styled from 'styled-components';
+
 import { FoodItem } from '.';
 import { Container } from '../App';
-import { FoodStoreType } from '../store/CategoryStore';
+import { FoodStoreType } from '../types/types';
 import { useRootStore } from '../store/RootState.Context';
 
 const FoodWrapper = styled.div`
@@ -16,24 +17,20 @@ const FoodWrapper = styled.div`
 `;
 
 const Food = () => {
-  const { categoriesStore } = useRootStore();
+  const { cartStore, foodStore, categoriesStore } = useRootStore();
 
   const onAddToCart = (obj: FoodStoreType) => {
-    categoriesStore.addItemToCart(obj);
+    cartStore.addItemToCart(obj);
   };
 
-  setInterval(() => {
-    categoriesStore.getFood(categoriesStore.categoryId, categoriesStore.searchValue);
-  }, 300000);
-
   React.useEffect(() => {
-    categoriesStore.getFood(categoriesStore.categoryId, categoriesStore.searchValue);
-  }, [categoriesStore, categoriesStore.searchValue]);
+    foodStore.getFood(categoriesStore.categoryId, foodStore.searchValue);
+  }, [foodStore, categoriesStore.categoryId, foodStore.searchValue]);
 
   return useObserver(() => (
     <Container>
       <FoodWrapper>
-        {categoriesStore.food.map((obj) => (
+        {foodStore.food.map((obj) => (
           <FoodItem key={obj.id} onAddToCart={onAddToCart} item={obj} />
         ))}
       </FoodWrapper>

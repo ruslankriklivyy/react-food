@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import userPng from '../assets/img/user.png';
-import cartEmptyPng from '../assets/img/cart-empty.png';
+import { useObserver } from 'mobx-react-lite';
 
 import { Button, CartFood, Title } from '.';
 import { useRootStore } from '../store/RootState.Context';
-import { useObserver } from 'mobx-react-lite';
-import { FoodStoreType } from '../store/CategoryStore';
+
+import userPng from '../assets/img/user.png';
+import cartEmptyPng from '../assets/img/cart-empty.png';
+import { FoodStoreType } from '../types/types';
 
 const CartUser = styled.div`
   display: flex;
@@ -33,22 +33,6 @@ const CartUserInfo = styled.div`
   }
   span {
     font-weight: 500;
-  }
-`;
-
-const HeaderCart = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  background-color: #faf9fb;
-  width: 60px;
-  height: 60px;
-  border-radius: 100%;
-  margin-right: 20px;
-  img {
-    width: 28px;
-    height: 28px;
   }
 `;
 
@@ -104,11 +88,10 @@ const CartEmpty = styled.div`
 `;
 
 const Cart = () => {
-  const { categoriesStore } = useRootStore();
+  const { cartStore } = useRootStore();
 
   const onRemoveCartItem = (id: number) => {
-    categoriesStore.removeItemCart(id);
-    console.log(categoriesStore.cart);
+    cartStore.removeItemCart(id);
   };
 
   const sendDelivery = (arr: FoodStoreType[]) => {
@@ -129,8 +112,8 @@ const Cart = () => {
       </CartTop>
       <CartBottom>
         <Title>Order Menu</Title>
-        {categoriesStore.cart.length > 0 ? (
-          categoriesStore.cart.map((obj) => (
+        {cartStore.cart.length > 0 ? (
+          cartStore.cart.map((obj) => (
             <CartFood key={obj.id} onRemoveCartItem={() => onRemoveCartItem(obj.id)} {...obj} />
           ))
         ) : (
@@ -140,9 +123,9 @@ const Cart = () => {
           </CartEmpty>
         )}
         <CartPrice>
-          Total Price: <span>$</span> {categoriesStore.totalPrice.toFixed(2)}
+          Total Price: <span>$</span> {cartStore.totalPrice.toFixed(2)}
         </CartPrice>
-        <Button onClick={() => sendDelivery(categoriesStore.cart)}>Checkout</Button>
+        <Button onClick={() => sendDelivery(cartStore.cart)}>Checkout</Button>
       </CartBottom>
     </CartWrapper>
   ));

@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useObserver } from 'mobx-react-lite';
 
 import { Button, Title } from '.';
 import { Container } from '../App';
+import { useRootStore } from '../store/RootState.Context';
 
 import searchSvg from '../assets/img/search.svg';
 import deliveryPng from '../assets/img/delivery.png';
-import { useObserver } from 'mobx-react-lite';
-import { useRootStore } from '../store/RootState.Context';
 
 const HeaderWrapper = styled.div`
   padding: 30px;
@@ -81,11 +81,11 @@ const HeaderSearch = styled.div`
 `;
 
 const Header = () => {
-  const { categoriesStore } = useRootStore();
+  const { foodStore, categoriesStore } = useRootStore();
 
   const onSearchFood = (name: string) => {
-    categoriesStore.searchFood(name.toLowerCase());
-    categoriesStore.getFood(categoriesStore.categoryId, categoriesStore.searchValue);
+    foodStore.searchFood(name.toLowerCase());
+    foodStore.getFood(categoriesStore.categoryId, foodStore.searchValue);
   };
 
   return useObserver(() => (
@@ -97,7 +97,7 @@ const Header = () => {
             <input
               type="text"
               placeholder="Search by food name"
-              value={categoriesStore.searchValue}
+              value={foodStore.searchValue}
               onChange={(e) => onSearchFood(e.target.value)}
             />
             <img src={searchSvg} alt="search svg" />

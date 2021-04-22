@@ -85,12 +85,11 @@ interface ICategories {
 }
 
 const Categories = () => {
-  const { categoriesStore } = useRootStore();
+  const { foodStore, categoriesStore } = useRootStore();
 
   const onSelectId = (id: number) => {
-    categoriesStore.getFood(id, categoriesStore.searchValue);
+    foodStore.getFood(id, foodStore.searchValue);
     categoriesStore.selectedCategory(id);
-    console.log(categoriesStore);
   };
 
   React.useEffect(() => {

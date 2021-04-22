@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import pizzaPng from '../assets/img/pizza.png';
-import cancelSvg from '../assets/img/cancel.svg';
 import { useObserver } from 'mobx-react-lite';
+
+import cancelSvg from '../assets/img/cancel.svg';
 
 const CartFoodItem = styled.div`
   position: relative;
