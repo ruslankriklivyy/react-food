@@ -9,6 +9,7 @@ import { useRootStore } from '../store/RootState.Context';
 const CategoriesWrapper = styled.div`
   margin-top: 60px;
   padding: 30px;
+  padding-bottom: 0;
 `;
 
 const CategoriesTop = styled.div`
@@ -19,12 +20,14 @@ const CategoriesTypes = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
 `;
 
 const CategoriesItem = styled.div`
   width: 130px;
   height: 180px;
   margin-right: 35px;
+  margin-bottom: 35px;
   ${(props: ICategories) =>
     props.active ? 'background-color: #fb9300' : 'background-color: #fff'};
   border-radius: 30px;

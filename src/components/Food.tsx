@@ -10,8 +10,9 @@ import { useRootStore } from '../store/RootState.Context';
 const FoodWrapper = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: flex-start;
-  margin-top: 120px;
+  margin-top: 40px;
   margin-bottom: 60px;
   padding: 30px;
 `;

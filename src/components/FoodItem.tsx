@@ -9,16 +9,13 @@ import fireSvg from '../assets/img/fire.svg';
 
 const FoodItemWrapper = styled.div`
   position: relative;
-  width: 270px;
-  height: 180px;
+  width: 260px;
+  height: 300px;
   margin-right: 15px;
-  background-color: #fff;
-  border-radius: 30px;
-  padding: 0 20px;
+  margin-bottom: 20px;
   color: #2a2b3c;
   h4 {
     font-weight: 700;
-    padding-top: 90px;
     font-size: 22px;
     margin-bottom: 10px;
   }
@@ -62,13 +59,15 @@ const FoodItemWrapper = styled.div`
 `;
 
 const FoodItemImage = styled.div`
-  position: absolute;
+  /* position: absolute;
   top: -80px;
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, 0); */
   img {
+    display: block;
     width: 160px;
     height: 160px;
+    margin: 0 auto;
     object-fit: contain;
   }
 `;
@@ -78,7 +77,7 @@ const FoodItemIcon = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: -70px;
+  top: 0;
   right: 0;
   width: 35px;
   height: 35px;
@@ -88,6 +87,15 @@ const FoodItemIcon = styled.div`
     width: 23px;
     height: 23px;
   }
+`;
+
+const FoodItemInfo = styled.div`
+  position: relative;
+  height: 120px;
+  background-color: #fff;
+  border-radius: 30px;
+  margin-top: 20px;
+  padding: 33px 15px 0 15px;
 `;
 
 interface IFoodItem {
@@ -106,13 +114,15 @@ const FoodItem: React.FC<IFoodItem> = ({ item, onAddToCart }) => {
       <FoodItemImage>
         <img src={image} alt="food png" />
       </FoodItemImage>
-      <h4>{name}</h4>
-      <span>
-        $<b>{price}</b>
-      </span>
-      <button onClick={() => onAddToCart(item)}>
-        <img src={plusSvg} alt="plus svg" />
-      </button>
+      <FoodItemInfo>
+        <h4>{name}</h4>
+        <span>
+          $<b>{price}</b>
+        </span>
+        <button onClick={() => onAddToCart(item)}>
+          <img src={plusSvg} alt="plus svg" />
+        </button>
+      </FoodItemInfo>
     </FoodItemWrapper>
   ));
 };
