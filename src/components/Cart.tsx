@@ -4,41 +4,10 @@ import { useObserver } from 'mobx-react-lite';
 
 import { Button, CartFood, Title } from '.';
 import { useRootStore } from '../store/RootState.Context';
-
-import userPng from '../assets/img/user.png';
-import cartEmptyPng from '../assets/img/cart-empty.png';
 import { FoodStoreType } from '../types/types';
 
-const CartUser = styled.div`
-  display: flex;
-  margin-left: auto;
-  align-items: center;
-  img {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    background-color: #d6f5ff;
-    border-radius: 100%;
-    padding: 12px;
-    margin-right: 10px;
-  }
-`;
-
-const CartUserInfo = styled.div`
-  h4 {
-    font-weight: 700;
-    font-size: 20px;
-  }
-  span {
-    font-weight: 500;
-  }
-`;
-
-const CartTop = styled.div`
-  display: flex;
-`;
+import cartEmptyPng from '../assets/img/cart-empty.png';
+import leftArrowSvg from '../assets/img/left-arrow.svg';
 
 const CartWrapper = styled.div`
   background-color: #fff;
@@ -47,13 +16,6 @@ const CartWrapper = styled.div`
   width: 100%;
   height: 100%;
   padding: 30px;
-  button {
-    margin-top: 60px;
-    width: 100%;
-    font-size: 26px;
-    padding: 18px 27px;
-    border-radius: 40px;
-  }
 `;
 
 const CartPrice = styled.div`
@@ -67,6 +29,14 @@ const CartPrice = styled.div`
 
 const CartBottom = styled.div`
   padding-top: 50px;
+  button {
+    margin-top: 60px;
+    width: 100%;
+    font-size: 26px;
+    padding: 18px 27px;
+    border-radius: 40px;
+    margin-bottom: 30px;
+  }
 `;
 
 const CartEmpty = styled.div`
@@ -87,7 +57,31 @@ const CartEmpty = styled.div`
   }
 `;
 
-const Cart = () => {
+const CartCancel = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  opacity: 0.7;
+  background-color: transparent;
+  border: none;
+  width: 40px !important;
+  height: 40px !important;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+  img {
+    width: 35px;
+    height: 35px;
+  }
+`;
+
+interface ICart {
+  onCancelCart: () => void;
+}
+
+const Cart: React.FC<ICart> = ({ onCancelCart }) => {
   const { cartStore } = useRootStore();
 
   const onRemoveCartItem = (id: number) => {
@@ -101,15 +95,9 @@ const Cart = () => {
 
   return useObserver(() => (
     <CartWrapper>
-      <CartTop>
-        <CartUser>
-          <img src={userPng} alt="user png" />
-          <CartUserInfo>
-            <h4>Jeremy</h4>
-            <span>User</span>
-          </CartUserInfo>
-        </CartUser>
-      </CartTop>
+      <CartCancel onClick={() => onCancelCart()}>
+        <img src={leftArrowSvg} alt="left arrow svg" />
+      </CartCancel>
       <CartBottom>
         <Title>Order Menu</Title>
         {cartStore.cart.length > 0 ? (

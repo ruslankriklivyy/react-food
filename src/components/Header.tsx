@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { useObserver } from 'mobx-react-lite';
 
-import { Button, Title } from '.';
+import { Button, SearchFood, Title } from '.';
 import { Container } from '../App';
 import { useRootStore } from '../store/RootState.Context';
 
-import searchSvg from '../assets/img/search.svg';
 import deliveryPng from '../assets/img/delivery.png';
+import shoppingCartSvg from '../assets/img/shopping-cart.svg';
+import userPng from '../assets/img/user.png';
 
 const HeaderWrapper = styled.div`
   padding: 30px;
@@ -51,37 +52,74 @@ const HeaderBottom = styled.div`
   }
 `;
 
-const HeaderSearch = styled.div`
+const ShoppingCart = styled.button`
+  margin: 0 20px;
   position: relative;
-  width: 350px;
-  height: 55px;
-  input {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 30px;
-    outline: none;
-    padding: 5px 20px;
-    font-weight: 500;
-    font-size: 16px;
-    &::placeholder {
-      font-weight: 500;
-      font-size: 16px;
-    }
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    transform: translateY(5px);
+  }
+  span {
+    position: absolute;
+    top: 5px;
+    right: -3px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #fb9300;
+    width: 21px;
+    height: 21px;
+    padding: 2px;
+    border-radius: 100%;
   }
   img {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translate(0, -50%);
-    width: 20px;
-    height: 20px;
-    opacity: 0.7;
+    width: 28px;
+    height: 28px;
   }
 `;
 
-const Header = () => {
-  const { foodStore, categoriesStore } = useRootStore();
+const CartUserInfo = styled.div`
+  h4 {
+    font-weight: 700;
+    font-size: 20px;
+  }
+  span {
+    font-weight: 500;
+  }
+`;
+
+const CartUser = styled.div`
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+  img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: #d6f5ff;
+    border-radius: 100%;
+    padding: 12px;
+    margin-right: 10px;
+  }
+`;
+
+const HeaderTopRight = styled.div`
+  display: flex;
+`;
+
+interface IHeader {
+  onHandleVisibleCart: () => void;
+}
+
+const Header: React.FC<IHeader> = ({ onHandleVisibleCart }) => {
+  const { foodStore, categoriesStore, cartStore } = useRootStore();
 
   const onSearchFood = (name: string) => {
     foodStore.searchFood(name.toLowerCase());
@@ -93,15 +131,21 @@ const Header = () => {
       <Container>
         <HeaderTop>
           <Title>React Food &#128523;</Title>
-          <HeaderSearch>
-            <input
-              type="text"
-              placeholder="Search by food name"
-              value={foodStore.searchValue}
-              onChange={(e) => onSearchFood(e.target.value)}
-            />
-            <img src={searchSvg} alt="search svg" />
-          </HeaderSearch>
+
+          <HeaderTopRight>
+            <SearchFood foodStore={foodStore} onSearchFood={onSearchFood} />
+            <ShoppingCart onClick={() => onHandleVisibleCart()}>
+              <span>{cartStore.totalCount}</span>
+              <img src={shoppingCartSvg} alt="shopping cart svg" />
+            </ShoppingCart>
+            <CartUser>
+              <img src={userPng} alt="user png" />
+              <CartUserInfo>
+                <h4>Jeremy</h4>
+                <span>User</span>
+              </CartUserInfo>
+            </CartUser>
+          </HeaderTopRight>
         </HeaderTop>
         <HeaderBottom>
           <img src={deliveryPng} alt="delivery png" />

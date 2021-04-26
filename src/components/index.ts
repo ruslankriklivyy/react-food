@@ -6,3 +6,4 @@ export { default as Food } from './Food';
 export { default as FoodItem } from './FoodItem';
 export { default as CartFood } from './CartFood';
 export { default as Home } from './Home';
+export { default as SearchFood } from './SearchFood';

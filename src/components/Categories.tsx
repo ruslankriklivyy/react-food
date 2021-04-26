@@ -87,7 +87,7 @@ interface ICategories {
   active: boolean;
 }
 
-const Categories = () => {
+const Categories = React.memo(() => {
   const { foodStore, categoriesStore } = useRootStore();
 
   const onSelectId = (id: number) => {
@@ -142,6 +142,6 @@ c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,35
       </Container>
     </CategoriesWrapper>
   ));
-};
+});
 
 export default Categories;

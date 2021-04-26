@@ -5,7 +5,7 @@ export class CartStore {
   @observable
   cart: FoodStoreType[] = [];
   totalPrice: number = 0;
-  totalCount: number = 1;
+  totalCount: number = 0;
 
   constructor() {
     makeObservable(this, {
@@ -31,9 +31,10 @@ export class CartStore {
     const totalPrice = this.cart.reduce((sum, obj) => {
       return sum + obj.price;
     }, obj.price);
+
     this.totalPrice = totalPrice;
 
-    const ids: any = [];
+    const ids: Array<number> = [];
 
     if (this.cart.length > 0) {
       this.cart.forEach((item) => {
@@ -44,20 +45,26 @@ export class CartStore {
           item.price = item.price + obj.price;
         }
       });
+      const totalCount = this.cart.reduce((sum, obj) => sum + obj.totalCount, 0);
+      this.totalCount = totalCount;
     }
 
     if (this.cart.length === 0 || ids[ids.length - 1] !== obj.id) {
       this.cart.push(newObj);
+      const totalCount = this.cart.reduce((sum, obj) => sum + obj.totalCount, 0);
+      this.totalCount = totalCount;
     }
   };
   @action
   removeItemCart = (id: number) => {
     const newCart = this.cart.filter((food) => food.id !== id);
-
     this.cart = newCart;
+
     const totalPrice = this.cart.reduce((sum, obj) => {
       return sum + Number(obj.price);
     }, 0);
     this.totalPrice = totalPrice;
+    const totalCount = this.cart.reduce((sum, obj) => sum + obj.totalCount, 0);
+    this.totalCount = totalCount;
   };
 }
