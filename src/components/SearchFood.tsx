@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -46,10 +47,7 @@ interface ISearchFood {
   onSearchFood: (text: string) => void;
 }
 
-const SearchFood: React.FC<ISearchFood> = React.memo(function SearchFood({
-  foodStore,
-  onSearchFood,
-}) {
+const SearchFood: React.FC<ISearchFood> = observer(({ foodStore, onSearchFood }) => {
   return (
     <HeaderSearch>
       <input
@@ -63,4 +61,4 @@ const SearchFood: React.FC<ISearchFood> = React.memo(function SearchFood({
   );
 });
 
-export default SearchFood;
+export default React.memo(SearchFood);

@@ -59,10 +59,6 @@ const FoodItemWrapper = styled.div`
 `;
 
 const FoodItemImage = styled.div`
-  /* position: absolute;
-  top: -80px;
-  left: 50%;
-  transform: translate(-50%, 0); */
   img {
     display: block;
     width: 160px;
@@ -127,4 +123,4 @@ const FoodItem: React.FC<IFoodItem> = ({ item, onAddToCart }) => {
   ));
 };
 
-export default FoodItem;
+export default React.memo(FoodItem);

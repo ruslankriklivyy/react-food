@@ -1,5 +1,4 @@
 import React from 'react';
-import { observer } from 'mobx-react-lite';
 import styled, { createGlobalStyle } from 'styled-components';
 
 import { Home } from './components';
@@ -43,13 +42,13 @@ const AppWrapper = styled.div`
   }
 `;
 
-const App = observer(() => {
+const App = () => {
   return (
     <AppWrapper>
       <GlobalStyle />
       <Home />
     </AppWrapper>
   );
-});
+};
 
 export default App;

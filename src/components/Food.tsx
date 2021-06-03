@@ -1,5 +1,5 @@
 import React from 'react';
-import { useObserver } from 'mobx-react-lite';
+import { observer, useObserver } from 'mobx-react-lite';
 import styled from 'styled-components';
 
 import { FoodItem } from '.';
@@ -22,7 +22,7 @@ const FoodWrapper = styled.div`
   }
 `;
 
-const Food = () => {
+const Food = observer(() => {
   const { cartStore, foodStore, categoriesStore } = useRootStore();
 
   const onAddToCart = (obj: FoodStoreType) => {
@@ -33,7 +33,7 @@ const Food = () => {
     foodStore.getFood(categoriesStore.categoryId, foodStore.searchValue);
   }, [foodStore, categoriesStore.categoryId, foodStore.searchValue]);
 
-  return useObserver(() => (
+  return (
     <Container>
       <FoodWrapper>
         {foodStore.food.map((obj) => (
@@ -41,7 +41,7 @@ const Food = () => {
         ))}
       </FoodWrapper>
     </Container>
-  ));
-};
+  );
+});
 
 export default Food;

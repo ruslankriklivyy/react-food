@@ -1,4 +1,4 @@
-import { useObserver } from 'mobx-react-lite';
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import styled from 'styled-components';
 import { Title } from '.';
@@ -98,7 +98,7 @@ interface ICategories {
   active: boolean;
 }
 
-const Categories = React.memo(() => {
+const Categories = observer(() => {
   const { foodStore, categoriesStore } = useRootStore();
 
   const onSelectId = (id: number) => {
@@ -110,7 +110,7 @@ const Categories = React.memo(() => {
     categoriesStore.getCategories();
   }, [categoriesStore]);
 
-  return useObserver(() => (
+  return (
     <CategoriesWrapper>
       <Container>
         <CategoriesTop>
@@ -152,7 +152,7 @@ c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,35
         </CategoriesTypes>
       </Container>
     </CategoriesWrapper>
-  ));
+  );
 });
 
-export default Categories;
+export default React.memo(Categories);

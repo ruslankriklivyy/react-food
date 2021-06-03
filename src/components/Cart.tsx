@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useObserver } from 'mobx-react-lite';
+import { observer, useObserver } from 'mobx-react-lite';
 
 import { Button, CartFood, Title } from '.';
 import { useRootStore } from '../store/RootState.Context';
@@ -74,6 +74,7 @@ const CartCancel = styled.button`
   img {
     width: 35px;
     height: 35px;
+    transform: rotate(-180deg);
   }
 `;
 
@@ -81,7 +82,7 @@ interface ICart {
   onCancelCart: () => void;
 }
 
-const Cart: React.FC<ICart> = ({ onCancelCart }) => {
+const Cart: React.FC<ICart> = observer(({ onCancelCart }) => {
   const { cartStore } = useRootStore();
 
   const onRemoveCartItem = (id: number) => {
@@ -93,7 +94,7 @@ const Cart: React.FC<ICart> = ({ onCancelCart }) => {
     console.log(newArr);
   };
 
-  return useObserver(() => (
+  return (
     <CartWrapper>
       <CartCancel onClick={() => onCancelCart()}>
         <img src={leftArrowSvg} alt="left arrow svg" />
@@ -116,7 +117,7 @@ const Cart: React.FC<ICart> = ({ onCancelCart }) => {
         <Button onClick={() => sendDelivery(cartStore.cart)}>Checkout</Button>
       </CartBottom>
     </CartWrapper>
-  ));
-};
+  );
+});
 
-export default Cart;
+export default React.memo(Cart);

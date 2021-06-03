@@ -19,17 +19,33 @@ const HomeLeft = styled.div`
   width: 100%;
 `;
 
+const CartBlockOut = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 400;
+  background: rgba(251, 147, 0, 0.3);
+  transition: all 0.2s ease;
+  ${(props: HomeStyledProps) => (props.show ? 'visibility: visible;' : 'visibility: hidden;')}
+  ${(props: HomeStyledProps) => (props.show ? 'opacity: 1;' : 'opacity: 0;')}
+`;
+
 const HomeRight = styled.div`
   position: absolute;
   top: 0;
-  ${(props: HomeStyledProps) => (props.show ? 'right: 0;' : 'right: -30%;')}
+  ${(props: HomeStyledProps) => (props.show ? 'right: 0;' : 'right: -35%;')}
   height: 100%;
   bottom: 0;
   background-color: #fff;
   overflow: auto;
   z-index: 200;
-  width: 27%;
+  width: 35%;
   transition: all 0.3s ease;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  z-index: 400;
   &::-webkit-scrollbar {
     width: 0;
   }
@@ -62,6 +78,7 @@ const Home = () => {
 
   return (
     <Container>
+      <CartBlockOut show={visibleCart}></CartBlockOut>
       <HomeWrapper>
         <HomeLeft>
           <Header onHandleVisibleCart={handleVisibleCart} />
