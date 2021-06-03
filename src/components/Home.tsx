@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { Categories, Header, Food } from '.';
 import { Container } from '../App';
+import { device } from '../utils/deviceMedia';
 import Cart from './Cart';
 
 const HomeWrapper = styled.div`
@@ -34,6 +35,14 @@ const HomeRight = styled.div`
   }
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
+  @media ${device.laptopL} {
+    width: 40%;
+    ${(props: HomeStyledProps) => (props.show ? 'right: 0;' : 'right: -40%;')}
+  }
+  @media ${device.tablet} {
+    width: 100%;
+    ${(props: HomeStyledProps) => (props.show ? 'right: 0;' : 'right: -100%;')}
+  }
 `;
 
 interface HomeStyledProps {

@@ -5,11 +5,15 @@ import { Title } from '.';
 import { Container } from '../App';
 
 import { useRootStore } from '../store/RootState.Context';
+import { device } from '../utils/deviceMedia';
 
 const CategoriesWrapper = styled.div`
   margin-top: 60px;
   padding: 30px;
   padding-bottom: 0;
+  @media ${device.mobile} {
+    margin-top: 0;
+  }
 `;
 
 const CategoriesTop = styled.div`
@@ -21,6 +25,9 @@ const CategoriesTypes = styled.div`
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
+  @media ${device.mobile} {
+    justify-content: center;
+  }
 `;
 
 const CategoriesItem = styled.div`
@@ -65,6 +72,10 @@ const CategoriesItem = styled.div`
       width: 13px;
       height: 13px;
     }
+  }
+  @media ${device.mobile} {
+    margin-right: 0;
+    margin: 15px;
   }
 `;
 

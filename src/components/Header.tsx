@@ -9,6 +9,7 @@ import { useRootStore } from '../store/RootState.Context';
 import deliveryPng from '../assets/img/delivery.png';
 import shoppingCartSvg from '../assets/img/shopping-cart.svg';
 import userPng from '../assets/img/user.png';
+import { device } from '../utils/deviceMedia';
 
 const HeaderWrapper = styled.div`
   padding: 30px;
@@ -19,6 +20,14 @@ const HeaderTop = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
+  @media ${device.laptop} {
+    flex-direction: column;
+  }
+  @media ${device.laptop} {
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
 `;
 
 const HeaderInfo = styled.div`
@@ -38,6 +47,10 @@ const HeaderInfo = styled.div`
       opacity: 1;
     }
   }
+  @media ${device.laptop} {
+    text-align: center;
+    margin-left: 0;
+  }
 `;
 
 const HeaderBottom = styled.div`
@@ -49,6 +62,17 @@ const HeaderBottom = styled.div`
   border-radius: 35px;
   img {
     height: 100%;
+  }
+  @media ${device.laptop} {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    img {
+      display: none;
+    }
+  }
+  @media ${device.mobile} {
+    height: 240px;
   }
 `;
 
@@ -95,7 +119,6 @@ const CartUserInfo = styled.div`
 
 const CartUser = styled.div`
   display: flex;
-  margin-left: auto;
   align-items: center;
   img {
     display: flex;
@@ -112,6 +135,20 @@ const CartUser = styled.div`
 
 const HeaderTopRight = styled.div`
   display: flex;
+  @media ${device.tablet} {
+    flex-direction: column;
+  }
+`;
+
+const HeaderTopUser = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  @media ${device.tablet} {
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
 `;
 
 interface IHeader {
@@ -131,20 +168,21 @@ const Header: React.FC<IHeader> = ({ onHandleVisibleCart }) => {
       <Container>
         <HeaderTop>
           <Title>React Food &#128523;</Title>
-
           <HeaderTopRight>
             <SearchFood foodStore={foodStore} onSearchFood={onSearchFood} />
-            <ShoppingCart onClick={() => onHandleVisibleCart()}>
-              <span>{cartStore.totalCount}</span>
-              <img src={shoppingCartSvg} alt="shopping cart svg" />
-            </ShoppingCart>
-            <CartUser>
-              <img src={userPng} alt="user png" />
-              <CartUserInfo>
-                <h4>Jeremy</h4>
-                <span>User</span>
-              </CartUserInfo>
-            </CartUser>
+            <HeaderTopUser>
+              <ShoppingCart onClick={() => onHandleVisibleCart()}>
+                <span>{cartStore.totalCount}</span>
+                <img src={shoppingCartSvg} alt="shopping cart svg" />
+              </ShoppingCart>
+              <CartUser>
+                <img src={userPng} alt="user png" />
+                <CartUserInfo>
+                  <h4>Jeremy</h4>
+                  <span>User</span>
+                </CartUserInfo>
+              </CartUser>
+            </HeaderTopUser>
           </HeaderTopRight>
         </HeaderTop>
         <HeaderBottom>

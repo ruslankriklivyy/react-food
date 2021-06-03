@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import searchSvg from '../assets/img/search.svg';
 import { IFoodStore } from '../types/types';
+import { device } from '../utils/deviceMedia';
 
 const HeaderSearch = styled.div`
   position: relative;
@@ -31,6 +32,12 @@ const HeaderSearch = styled.div`
     width: 20px;
     height: 20px;
     opacity: 0.7;
+  }
+  @media ${device.tablet} {
+    margin-right: 0;
+  }
+  @media ${device.mobile} {
+    width: 100%;
   }
 `;
 

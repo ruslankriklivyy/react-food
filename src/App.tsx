@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import styled, { createGlobalStyle } from 'styled-components';
 
 import { Home } from './components';
+import { device } from './utils/deviceMedia';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -37,6 +38,9 @@ export const Container = styled.div`
 
 const AppWrapper = styled.div`
   padding: 30px;
+  @media ${device.mobile} {
+    padding: 15px;
+  }
 `;
 
 const App = observer(() => {

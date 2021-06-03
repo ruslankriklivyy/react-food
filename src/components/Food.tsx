@@ -6,6 +6,7 @@ import { FoodItem } from '.';
 import { Container } from '../App';
 import { FoodStoreType } from '../types/types';
 import { useRootStore } from '../store/RootState.Context';
+import { device } from '../utils/deviceMedia';
 
 const FoodWrapper = styled.div`
   display: flex;
@@ -15,6 +16,10 @@ const FoodWrapper = styled.div`
   margin-top: 40px;
   margin-bottom: 60px;
   padding: 30px;
+  @media ${device.mobile} {
+    justify-content: center;
+    margin-bottom: 0;
+  }
 `;
 
 const Food = () => {
