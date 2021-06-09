@@ -1,6 +1,6 @@
 ## React Food 😋
 
-[Live demo](https://react-food.vercel.app/)
+▶[Live demo](https://react-food.vercel.app/)
 
 ![Header](https://github.com/ruslankriklivyy/react-food/blob/main/public/reactFood.gif)
 
