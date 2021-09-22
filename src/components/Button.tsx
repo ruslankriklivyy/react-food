@@ -25,8 +25,6 @@ interface IButton {
   onClick?: React.ReactEventHandler;
 }
 
-const Button: React.FC<IButton> = ({ children, onClick }) => {
+export const Button: React.FC<IButton> = ({ children, onClick }) => {
   return <ButtonWrapper onClick={onClick}>{children}</ButtonWrapper>;
 };
-
-export default Button;

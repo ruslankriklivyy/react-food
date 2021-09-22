@@ -2,11 +2,11 @@ import React from 'react';
 import { observer } from 'mobx-react-lite';
 import styled from 'styled-components';
 
-import { FoodItem } from '.';
 import { Container } from '../App';
 import { FoodStoreType } from '../types/types';
 import { useRootStore } from '../store/RootState.Context';
 import { device } from '../utils/deviceMedia';
+import { FoodItem } from './FoodItem';
 
 const FoodWrapper = styled.div`
   display: flex;
@@ -22,7 +22,7 @@ const FoodWrapper = styled.div`
   }
 `;
 
-const Food = observer(() => {
+export const Food = observer(() => {
   const { cartStore, foodStore, categoriesStore } = useRootStore();
 
   const onAddToCart = (obj: FoodStoreType) => {
@@ -43,5 +43,3 @@ const Food = observer(() => {
     </Container>
   );
 });
-
-export default Food;

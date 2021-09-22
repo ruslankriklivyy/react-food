@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { observer, useObserver } from 'mobx-react-lite';
+import { observer } from 'mobx-react-lite';
 
-import { Button, SearchFood, Title } from '.';
 import { Container } from '../App';
 import { useRootStore } from '../store/RootState.Context';
 
@@ -10,6 +9,9 @@ import deliveryPng from '../assets/img/delivery.png';
 import shoppingCartSvg from '../assets/img/shopping-cart.svg';
 import userPng from '../assets/img/user.png';
 import { device } from '../utils/deviceMedia';
+import { Title } from './Title';
+import { SearchFood } from './SearchFood';
+import { Button } from './Button';
 
 const HeaderWrapper = styled.div`
   padding: 30px;
@@ -155,7 +157,7 @@ interface IHeader {
   onHandleVisibleCart: () => void;
 }
 
-const Header: React.FC<IHeader> = observer(({ onHandleVisibleCart }) => {
+export const Header: React.FC<IHeader> = observer(({ onHandleVisibleCart }) => {
   const { foodStore, categoriesStore, cartStore } = useRootStore();
 
   const onSearchFood = (name: string) => {
@@ -199,5 +201,3 @@ const Header: React.FC<IHeader> = observer(({ onHandleVisibleCart }) => {
     </HeaderWrapper>
   );
 });
-
-export default Header;

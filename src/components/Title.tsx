@@ -14,8 +14,6 @@ interface ITitle {
   children: React.ReactNode;
 }
 
-const Title: React.FC<ITitle> = ({ children }) => {
+export const Title: React.FC<ITitle> = ({ children }) => {
   return <TitleStyle>{children}</TitleStyle>;
 };
-
-export default Title;

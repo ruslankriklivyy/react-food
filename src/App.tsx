@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
+import { Home } from './components/Home';
 
-import { Home } from './components';
 import { device } from './utils/deviceMedia';
 
 const GlobalStyle = createGlobalStyle`

@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { observer, useObserver } from 'mobx-react-lite';
+import { useObserver } from 'mobx-react-lite';
 
-import { Button, CartFood, Title } from '.';
 import { useRootStore } from '../store/RootState.Context';
 import { FoodStoreType } from '../types/types';
 
 import cartEmptyPng from '../assets/img/cart-empty.png';
 import leftArrowSvg from '../assets/img/left-arrow.svg';
+import { Title } from './Title';
+import { Button } from './Button';
+import { CartFood } from './CartFood';
 
 const CartWrapper = styled.div`
   background-color: #fff;
@@ -82,7 +84,7 @@ interface ICart {
   onCancelCart: () => void;
 }
 
-const Cart: React.FC<ICart> = observer(({ onCancelCart }) => {
+export const Cart: React.FC<ICart> = React.memo(({ onCancelCart }) => {
   const { cartStore } = useRootStore();
 
   const onRemoveCartItem = (id: number) => {
@@ -94,7 +96,7 @@ const Cart: React.FC<ICart> = observer(({ onCancelCart }) => {
     console.log(newArr);
   };
 
-  return (
+  return useObserver(() => (
     <CartWrapper>
       <CartCancel onClick={() => onCancelCart()}>
         <img src={leftArrowSvg} alt="left arrow svg" />
@@ -117,7 +119,5 @@ const Cart: React.FC<ICart> = observer(({ onCancelCart }) => {
         <Button onClick={() => sendDelivery(cartStore.cart)}>Checkout</Button>
       </CartBottom>
     </CartWrapper>
-  );
+  ));
 });
-
-export default React.memo(Cart);

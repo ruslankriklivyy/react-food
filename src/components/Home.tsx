@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Categories, Header, Food } from '.';
 import { Container } from '../App';
 import { device } from '../utils/deviceMedia';
-import Cart from './Cart';
+import { Cart } from './Cart';
+import { Categories } from './Categories';
+import { Food } from './Food';
+import { Header } from './Header';
 
 const HomeWrapper = styled.div`
   position: relative;
@@ -65,7 +67,7 @@ interface HomeStyledProps {
   show: boolean;
 }
 
-const Home = () => {
+export const Home = () => {
   const [visibleCart, setVisibleCart] = React.useState(false);
 
   const handleVisibleCart = () => {
@@ -92,5 +94,3 @@ const Home = () => {
     </Container>
   );
 };
-
-export default Home;

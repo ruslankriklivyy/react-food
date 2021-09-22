@@ -79,7 +79,13 @@ interface ICartFood {
   onRemoveCartItem: () => void;
 }
 
-const CartFood: React.FC<ICartFood> = ({ name, price, image, totalCount, onRemoveCartItem }) => {
+export const CartFood: React.FC<ICartFood> = ({
+  name,
+  price,
+  image,
+  totalCount,
+  onRemoveCartItem,
+}) => {
   return useObserver(() => (
     <CartFoodItem>
       <CartFoodImg>
@@ -101,5 +107,3 @@ const CartFood: React.FC<ICartFood> = ({ name, price, image, totalCount, onRemov
     </CartFoodItem>
   ));
 };
-
-export default CartFood;

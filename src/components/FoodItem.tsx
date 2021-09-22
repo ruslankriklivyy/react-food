@@ -99,7 +99,7 @@ interface IFoodItem {
   onAddToCart: any;
 }
 
-const FoodItem: React.FC<IFoodItem> = ({ item, onAddToCart }) => {
+export const FoodItem: React.FC<IFoodItem> = React.memo(function FoodItem({ item, onAddToCart }) {
   const { name, image, price } = item;
 
   return useObserver(() => (
@@ -121,6 +121,4 @@ const FoodItem: React.FC<IFoodItem> = ({ item, onAddToCart }) => {
       </FoodItemInfo>
     </FoodItemWrapper>
   ));
-};
-
-export default React.memo(FoodItem);
+});

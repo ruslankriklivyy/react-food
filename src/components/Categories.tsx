@@ -1,11 +1,11 @@
-import { observer } from 'mobx-react-lite';
+import { useObserver } from 'mobx-react-lite';
 import React from 'react';
 import styled from 'styled-components';
-import { Title } from '.';
 import { Container } from '../App';
 
 import { useRootStore } from '../store/RootState.Context';
 import { device } from '../utils/deviceMedia';
+import { Title } from './Title';
 
 const CategoriesWrapper = styled.div`
   margin-top: 60px;
@@ -98,7 +98,7 @@ interface ICategories {
   active: boolean;
 }
 
-const Categories = observer(() => {
+export const Categories = React.memo(() => {
   const { foodStore, categoriesStore } = useRootStore();
 
   const onSelectId = (id: number) => {
@@ -110,7 +110,7 @@ const Categories = observer(() => {
     categoriesStore.getCategories();
   }, [categoriesStore]);
 
-  return (
+  return useObserver(() => (
     <CategoriesWrapper>
       <Container>
         <CategoriesTop>
@@ -152,7 +152,5 @@ c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,35
         </CategoriesTypes>
       </Container>
     </CategoriesWrapper>
-  );
+  ));
 });
-
-export default React.memo(Categories);
