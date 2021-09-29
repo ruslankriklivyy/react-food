@@ -31,28 +31,23 @@ export class CartStore {
     const totalPrice = this.cart.reduce((sum, obj) => {
       return sum + obj.price;
     }, obj.price);
-
     this.totalPrice = totalPrice;
 
-    const ids: Array<number> = [];
+    const isAlreadyHave = this.cart.some((i) => i.id === obj.id);
 
     if (this.cart.length > 0) {
       this.cart.forEach((item) => {
         if (item.id === obj.id) {
-          ids.push(obj.id);
-
           item.totalCount++;
           item.price = item.price + obj.price;
+          this.totalCount = this.cart.reduce((sum, obj) => sum + obj.totalCount, 0);
         }
       });
-      const totalCount = this.cart.reduce((sum, obj) => sum + obj.totalCount, 0);
-      this.totalCount = totalCount;
     }
 
-    if (this.cart.length === 0 || ids[ids.length - 1] !== obj.id) {
+    if (this.cart.length === 0 || !isAlreadyHave) {
       this.cart.push(newObj);
-      const totalCount = this.cart.reduce((sum, obj) => sum + obj.totalCount, 0);
-      this.totalCount = totalCount;
+      this.totalCount = this.cart.reduce((sum, obj) => sum + obj.totalCount, 0);
     }
   };
   @action
