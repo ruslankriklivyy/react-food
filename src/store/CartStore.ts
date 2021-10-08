@@ -1,5 +1,5 @@
 import { FoodStoreType } from '../types/types';
-import { action, observable, makeObservable } from 'mobx';
+import { action, observable, makeObservable, computed } from 'mobx';
 
 export class CartStore {
   @observable
@@ -14,6 +14,8 @@ export class CartStore {
       totalCount: observable,
       addItemToCart: action,
       removeItemCart: action,
+      getTotalPrice: computed,
+      getTotalCount: computed,
     });
   }
 
@@ -28,10 +30,6 @@ export class CartStore {
       totalCount: 1,
     };
 
-    this.totalPrice = this.cart.reduce((sum, obj) => {
-      return sum + obj.price;
-    }, obj.price);
-
     const isAlreadyHave = this.cart.some((i) => i.id === obj.id);
 
     if (this.cart.length > 0) {
@@ -39,23 +37,33 @@ export class CartStore {
         if (item.id === obj.id) {
           item.totalCount++;
           item.price = item.price + obj.price;
-          this.totalCount = this.cart.reduce((sum, obj) => sum + obj.totalCount, 0);
+          this.totalCount = this.getTotalCount;
+          this.totalPrice = this.getTotalPrice;
         }
       });
     }
 
     if (this.cart.length === 0 || !isAlreadyHave) {
       this.cart.push(newObj);
-      this.totalCount = this.cart.reduce((sum, obj) => sum + obj.totalCount, 0);
+      this.totalCount = this.getTotalCount;
+      this.totalPrice = this.getTotalPrice;
     }
   };
+
   @action
   removeItemCart = (id: number) => {
-    const newCart = this.cart.filter((food) => food.id !== id);
-    this.cart = newCart;
-    this.totalPrice = this.cart.reduce((sum, obj) => {
-      return sum + Number(obj.price);
-    }, 0);
-    this.totalCount = this.cart.reduce((sum, obj) => sum + obj.totalCount, 0);
+    this.cart = this.cart.filter((food) => food.id !== id);
+    this.totalPrice = this.getTotalPrice;
+    this.totalCount = this.getTotalCount;
   };
+
+  @computed
+  get getTotalPrice() {
+    return this.cart.reduce((sum, obj) => sum + Number(obj.price), 0);
+  }
+
+  @computed
+  get getTotalCount() {
+    return this.cart.reduce((sum, obj) => sum + obj.totalCount, 0);
+  }
 }
