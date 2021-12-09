@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useObserver } from 'mobx-react-lite';
+import { Observer, useObserver } from 'mobx-react-lite';
 
 import { useRootStore } from '../store/RootState.Context';
 import { FoodStoreType } from '../types/types';
@@ -96,28 +96,40 @@ export const Cart: React.FC<ICart> = React.memo(({ onCancelCart }) => {
     console.log(newArr);
   };
 
-  return useObserver(() => (
+  return (
     <CartWrapper>
-      <CartCancel onClick={() => onCancelCart()}>
-        <img src={leftArrowSvg} alt="left arrow svg" />
-      </CartCancel>
-      <CartBottom>
-        <Title>Order Menu</Title>
-        {cartStore.cart.length > 0 ? (
-          cartStore.cart.map((obj) => (
-            <CartFood key={obj.id} onRemoveCartItem={() => onRemoveCartItem(obj.id)} {...obj} />
-          ))
-        ) : (
-          <CartEmpty>
-            <img src={cartEmptyPng} alt="cart empty" />
-            <span>Cart Empty</span>
-          </CartEmpty>
+      <Observer>
+        {() => (
+          <>
+            <CartCancel onClick={() => onCancelCart()}>
+              <img src={leftArrowSvg} alt="left arrow svg" />
+            </CartCancel>
+            <CartBottom>
+              <Title>Order Menu</Title>
+              {cartStore.cart.length > 0 ? (
+                cartStore.cart.map((obj) => (
+                  <CartFood
+                    key={obj.id}
+                    onRemoveCartItem={() => onRemoveCartItem(obj.id)}
+                    {...obj}
+                  />
+                ))
+              ) : (
+                <CartEmpty>
+                  <img src={cartEmptyPng} alt="cart empty" />
+                  <span>Cart Empty</span>
+                </CartEmpty>
+              )}
+              <CartPrice>
+                Total Price: <span>$</span> {cartStore.totalPrice.toFixed(2)}
+              </CartPrice>
+              <Button onClick={() => sendDelivery(cartStore.cart)}>
+                Checkout
+              </Button>
+            </CartBottom>
+          </>
         )}
-        <CartPrice>
-          Total Price: <span>$</span> {cartStore.totalPrice.toFixed(2)}
-        </CartPrice>
-        <Button onClick={() => sendDelivery(cartStore.cart)}>Checkout</Button>
-      </CartBottom>
+      </Observer>
     </CartWrapper>
-  ));
+  );
 });
