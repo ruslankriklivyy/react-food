@@ -1,4 +1,4 @@
-import { useObserver } from 'mobx-react-lite';
+import { Observer } from 'mobx-react-lite';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -47,16 +47,22 @@ interface ISearchFood {
   onSearchFood: (text: string) => void;
 }
 
-export const SearchFood: React.FC<ISearchFood> = React.memo(({ foodStore, onSearchFood }) => {
-  return useObserver(() => (
-    <HeaderSearch>
-      <input
-        type="text"
-        placeholder="Search by food name"
-        value={foodStore.searchValue}
-        onChange={(e) => onSearchFood(e.target.value)}
-      />
-      <img src={searchSvg} alt="search svg" />
-    </HeaderSearch>
-  ));
-});
+export const SearchFood: React.FC<ISearchFood> = React.memo(
+  ({ foodStore, onSearchFood }) => {
+    return (
+      <Observer>
+        {() => (
+          <HeaderSearch>
+            <input
+              type="text"
+              placeholder="Search by food name"
+              value={foodStore.searchValue}
+              onChange={(e) => onSearchFood(e.target.value)}
+            />
+            <img src={searchSvg} alt="search svg" />
+          </HeaderSearch>
+        )}
+      </Observer>
+    );
+  },
+);

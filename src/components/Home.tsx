@@ -30,7 +30,8 @@ const CartBlockOut = styled.div`
   z-index: 400;
   background: rgba(251, 147, 0, 0.3);
   transition: all 0.2s ease;
-  ${(props: HomeStyledProps) => (props.show ? 'visibility: visible;' : 'visibility: hidden;')}
+  ${(props: HomeStyledProps) =>
+    props.show ? 'visibility: visible;' : 'visibility: hidden;'}
   ${(props: HomeStyledProps) => (props.show ? 'opacity: 1;' : 'opacity: 0;')}
 `;
 
@@ -80,14 +81,17 @@ export const Home = () => {
 
   return (
     <Container>
-      <CartBlockOut show={visibleCart}></CartBlockOut>
+      <CartBlockOut
+        data-testid={'cartBlockOut'}
+        show={visibleCart}
+      ></CartBlockOut>
       <HomeWrapper>
         <HomeLeft>
           <Header onHandleVisibleCart={handleVisibleCart} />
           <Categories />
           <Food />
         </HomeLeft>
-        <HomeRight show={visibleCart}>
+        <HomeRight data-testid={'homeRight'} show={visibleCart}>
           <Cart onCancelCart={cancelCart} />
         </HomeRight>
       </HomeWrapper>

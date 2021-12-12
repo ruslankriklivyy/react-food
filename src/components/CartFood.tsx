@@ -102,7 +102,10 @@ export const CartFood: React.FC<ICartFood> = ({
               <span>$</span>
               {price.toFixed(2)}
             </CartFoodPrice>
-            <CartFoodClose onClick={onRemoveCartItem}>
+            <CartFoodClose
+              data-testid={'btnRemoveCartItem'}
+              onClick={onRemoveCartItem}
+            >
               <img src={cancelSvg} alt="cancel svg" />
             </CartFoodClose>
           </CartFoodInfo>

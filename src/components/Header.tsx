@@ -173,7 +173,10 @@ export const Header: React.FC<IHeader> = observer(({ onHandleVisibleCart }) => {
           <HeaderTopRight>
             <SearchFood foodStore={foodStore} onSearchFood={onSearchFood} />
             <HeaderTopUser>
-              <ShoppingCart onClick={() => onHandleVisibleCart()}>
+              <ShoppingCart
+                data-testid={'btnOpenCart'}
+                onClick={() => onHandleVisibleCart()}
+              >
                 <span>{cartStore.totalCount}</span>
                 <img src={shoppingCartSvg} alt="shopping cart svg" />
               </ShoppingCart>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { useObserver } from 'mobx-react-lite';
+import { Observer } from 'mobx-react-lite';
 import { FoodStoreType } from '../types/types';
 
 import plusSvg from '../assets/img/plus.svg';
@@ -99,26 +99,36 @@ interface IFoodItem {
   onAddToCart: any;
 }
 
-export const FoodItem: React.FC<IFoodItem> = React.memo(function FoodItem({ item, onAddToCart }) {
+export const FoodItem: React.FC<IFoodItem> = React.memo(function FoodItem({
+  item,
+  onAddToCart,
+}) {
   const { name, image, price } = item;
 
-  return useObserver(() => (
-    <FoodItemWrapper>
-      <FoodItemIcon>
-        <img src={fireSvg} alt="fire svg" />
-      </FoodItemIcon>
-      <FoodItemImage>
-        <img src={image} alt="food png" />
-      </FoodItemImage>
-      <FoodItemInfo>
-        <h4>{name}</h4>
-        <span>
-          $<b>{price}</b>
-        </span>
-        <button onClick={() => onAddToCart(item)}>
-          <img src={plusSvg} alt="plus svg" />
-        </button>
-      </FoodItemInfo>
-    </FoodItemWrapper>
-  ));
+  return (
+    <Observer>
+      {() => (
+        <FoodItemWrapper>
+          <FoodItemIcon>
+            <img src={fireSvg} alt="fire svg" />
+          </FoodItemIcon>
+          <FoodItemImage>
+            <img src={image} alt="food png" />
+          </FoodItemImage>
+          <FoodItemInfo>
+            <h4>{name}</h4>
+            <span>
+              $<b>{price}</b>
+            </span>
+            <button
+              data-testid={'btnAddToCart'}
+              onClick={() => onAddToCart(item)}
+            >
+              <img src={plusSvg} alt="plus svg" />
+            </button>
+          </FoodItemInfo>
+        </FoodItemWrapper>
+      )}
+    </Observer>
+  );
 });
