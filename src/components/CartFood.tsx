@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useObserver } from 'mobx-react-lite';
+import { Observer } from 'mobx-react-lite';
 
 import cancelSvg from '../assets/img/cancel.svg';
 
@@ -86,24 +86,28 @@ export const CartFood: React.FC<ICartFood> = ({
   totalCount,
   onRemoveCartItem,
 }) => {
-  return useObserver(() => (
-    <CartFoodItem>
-      <CartFoodImg>
-        <img src={image} alt="pizza png" />
-      </CartFoodImg>
-      <CartFoodInfo>
-        <h4>{name}</h4>
-        <p>
-          <span>x</span> {totalCount}
-        </p>
-        <CartFoodPrice>
-          <span>$</span>
-          {price.toFixed(2)}
-        </CartFoodPrice>
-        <CartFoodClose onClick={onRemoveCartItem}>
-          <img src={cancelSvg} alt="cancel svg" />
-        </CartFoodClose>
-      </CartFoodInfo>
-    </CartFoodItem>
-  ));
+  return (
+    <Observer>
+      {() => (
+        <CartFoodItem>
+          <CartFoodImg>
+            <img src={image} alt="pizza png" />
+          </CartFoodImg>
+          <CartFoodInfo>
+            <h4>{name}</h4>
+            <p>
+              <span>x</span> {totalCount}
+            </p>
+            <CartFoodPrice>
+              <span>$</span>
+              {price.toFixed(2)}
+            </CartFoodPrice>
+            <CartFoodClose onClick={onRemoveCartItem}>
+              <img src={cancelSvg} alt="cancel svg" />
+            </CartFoodClose>
+          </CartFoodInfo>
+        </CartFoodItem>
+      )}
+    </Observer>
+  );
 };

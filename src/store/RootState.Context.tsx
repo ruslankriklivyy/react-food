@@ -9,14 +9,21 @@ type RootStateContextValue = {
   cartStore: CartStore;
 };
 
-const RootStateContext = React.createContext<RootStateContextValue>({} as RootStateContextValue);
+export const RootStateContext = React.createContext<RootStateContextValue>(
+  {} as RootStateContextValue,
+);
 
 const categoriesStore = new CategoriesStore();
 const foodStore = new FoodStore();
 const cartStore = new CartStore();
 
-export const RootStateProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => (
-  <RootStateContext.Provider value={{ categoriesStore, foodStore, cartStore }}>
+export const RootStateProvider: React.FC<React.PropsWithChildren<{}> | any> = ({
+  children,
+  value,
+}) => (
+  <RootStateContext.Provider
+    value={value ?? { categoriesStore, foodStore, cartStore }}
+  >
     {children}
   </RootStateContext.Provider>
 );
