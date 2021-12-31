@@ -2,16 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { observer } from 'mobx-react-lite';
 
-import { Container } from '../App';
-import { useRootStore } from '../store/RootState.Context';
+import { Container } from 'App';
+import { useRootStore } from 'store/RootState.Context';
 
-import deliveryPng from '../assets/img/delivery.png';
-import shoppingCartSvg from '../assets/img/shopping-cart.svg';
-import userPng from '../assets/img/user.png';
-import { device } from '../utils/deviceMedia';
-import { Title } from './Title';
-import { SearchFood } from './SearchFood';
-import { Button } from './Button';
+import deliveryPng from 'assets/img/delivery.png';
+import shoppingCartSvg from 'assets/img/shopping-cart.svg';
+import userPng from 'assets/img/user.png';
+import { device } from 'utils/deviceMedia';
+import { Title } from 'components/Title';
+import { SearchFood } from 'components/SearchFood';
+import { Button } from 'components/Button';
 
 const HeaderWrapper = styled.div`
   padding: 30px;

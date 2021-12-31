@@ -2,11 +2,11 @@ import React from 'react';
 import { observer } from 'mobx-react-lite';
 import styled from 'styled-components';
 
-import { Container } from '../App';
-import { FoodStoreType } from '../types/types';
-import { useRootStore } from '../store/RootState.Context';
-import { device } from '../utils/deviceMedia';
-import { FoodItem } from './FoodItem';
+import { Container } from 'App';
+import { FoodStoreType } from 'types/types';
+import { useRootStore } from 'store/RootState.Context';
+import { device } from 'utils/deviceMedia';
+import { FoodItem } from 'components/FoodItem';
 
 const FoodWrapper = styled.div`
   display: flex;

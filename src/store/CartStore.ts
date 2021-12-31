@@ -1,4 +1,4 @@
-import { FoodStoreType } from '../types/types';
+import { FoodStoreType } from 'types/types';
 import { action, observable, makeObservable, computed } from 'mobx';
 
 export class CartStore {

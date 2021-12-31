@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 
-import { CartStore } from '../store/CartStore';
-import { RootStateProvider } from '../store/RootState.Context';
-import { Cart } from './Cart';
+import { CartStore } from 'store/CartStore';
+import { RootStateProvider } from 'store/RootState.Context';
+import { Cart } from 'components/Cart';
 
 const mockOnCancelCart = jest.fn();
 let cartMockStore: CartStore;

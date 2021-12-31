@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Observer } from 'mobx-react-lite';
-import { FoodStoreType } from '../types/types';
+import { FoodStoreType } from 'types/types';
 
-import plusSvg from '../assets/img/plus.svg';
-import fireSvg from '../assets/img/fire.svg';
+import plusSvg from 'assets/img/plus.svg';
+import fireSvg from 'assets/img/fire.svg';
 
 const FoodItemWrapper = styled.div`
   position: relative;

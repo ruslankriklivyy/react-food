@@ -1,4 +1,4 @@
-import { CategoriesStore } from './CategoryStore';
+import { CategoriesStore } from 'store/CategoryStore';
 
 let mockCategoriesStore: CategoriesStore;
 

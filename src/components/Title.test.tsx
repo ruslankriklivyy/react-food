@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
-import { RootStateProvider } from '../store/RootState.Context';
-import { Title } from './Title';
+import { RootStateProvider } from 'store/RootState.Context';
+import { Title } from 'components/Title';
 
 describe('render title', () => {
   it('should be render with props', () => {

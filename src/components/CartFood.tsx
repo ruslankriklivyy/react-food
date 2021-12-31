@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Observer } from 'mobx-react-lite';
 
-import cancelSvg from '../assets/img/cancel.svg';
+import cancelSvg from 'assets/img/cancel.svg';
 
 const CartFoodItem = styled.div`
   position: relative;

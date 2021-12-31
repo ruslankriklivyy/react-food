@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { device } from '../utils/deviceMedia';
+import { device } from 'utils/deviceMedia';
 
 const TitleStyle = styled.h2`
   font-weight: 700;

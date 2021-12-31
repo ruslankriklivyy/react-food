@@ -1,6 +1,6 @@
-import { FoodStoreType } from '../types/types';
+import { FoodStoreType } from 'types/types';
 import { action, observable, makeObservable } from 'mobx';
-import { fetchFood } from '../api/api';
+import { fetchFood } from 'api/api';
 
 export class FoodStore {
   @observable

@@ -1,8 +1,8 @@
 import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './App';
-import { RootStateProvider } from './store/RootState.Context';
+import App from 'App';
+import { RootStateProvider } from 'store/RootState.Context';
 
 export const Context = createContext(null);
 

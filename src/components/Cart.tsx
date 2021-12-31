@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Observer, useObserver } from 'mobx-react-lite';
+import { Observer } from 'mobx-react-lite';
 
-import { useRootStore } from '../store/RootState.Context';
-import { FoodStoreType } from '../types/types';
+import { useRootStore } from 'store/RootState.Context';
+import { FoodStoreType } from 'types/types';
 
-import cartEmptyPng from '../assets/img/cart-empty.png';
-import leftArrowSvg from '../assets/img/left-arrow.svg';
-import { Title } from './Title';
-import { Button } from './Button';
-import { CartFood } from './CartFood';
+import cartEmptyPng from 'assets/img/cart-empty.png';
+import leftArrowSvg from 'assets/img/left-arrow.svg';
+import { Title } from 'components/Title';
+import { Button } from 'components/Button';
+import { CartFood } from 'components/CartFood';
 
 const CartWrapper = styled.div`
   background-color: #fff;

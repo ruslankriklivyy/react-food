@@ -1,6 +1,6 @@
-import { CategoriesStoreType } from '../types/types';
+import { CategoriesStoreType } from 'types/types';
 import { action, observable, makeObservable } from 'mobx';
-import { fetchCategories } from '../api/api';
+import { fetchCategories } from 'api/api';
 
 export class CategoriesStore {
   @observable

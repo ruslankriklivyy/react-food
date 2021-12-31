@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { CartFood } from './CartFood';
+import { CartFood } from 'components/CartFood';
 
 const mockOnRemoveCartItem = jest.fn();
 

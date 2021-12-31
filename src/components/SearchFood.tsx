@@ -2,9 +2,9 @@ import { Observer } from 'mobx-react-lite';
 import React from 'react';
 import styled from 'styled-components';
 
-import searchSvg from '../assets/img/search.svg';
-import { IFoodStore } from '../types/types';
-import { device } from '../utils/deviceMedia';
+import searchSvg from 'assets/img/search.svg';
+import { IFoodStore } from 'types/types';
+import { device } from 'utils/deviceMedia';
 
 const HeaderSearch = styled.div`
   position: relative;

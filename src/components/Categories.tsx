@@ -1,11 +1,11 @@
 import { Observer } from 'mobx-react-lite';
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from '../App';
+import { Container } from 'App';
 
-import { useRootStore } from '../store/RootState.Context';
-import { device } from '../utils/deviceMedia';
-import { Title } from './Title';
+import { useRootStore } from 'store/RootState.Context';
+import { device } from 'utils/deviceMedia';
+import { Title } from 'components/Title';
 
 const CategoriesWrapper = styled.div`
   margin-top: 60px;

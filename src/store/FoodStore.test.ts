@@ -1,4 +1,4 @@
-import { FoodStore } from './FoodStore';
+import { FoodStore } from 'store/FoodStore';
 
 let mockFoodStore: FoodStore;
 

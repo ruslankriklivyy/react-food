@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Container } from '../App';
-import { device } from '../utils/deviceMedia';
-import { Cart } from './Cart';
-import { Categories } from './Categories';
-import { Food } from './Food';
-import { Header } from './Header';
+import { Container } from 'App';
+import { device } from 'utils/deviceMedia';
+import { Cart } from 'components/Cart';
+import { Categories } from 'components/Categories';
+import { Food } from 'components/Food';
+import { Header } from 'components/Header';
 
 const HomeWrapper = styled.div`
   position: relative;

@@ -1,10 +1,10 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import { CategoriesStore } from '../store/CategoryStore';
-import { FoodStore } from '../store/FoodStore';
-import { RootStateProvider } from '../store/RootState.Context';
-import { Categories } from './Categories';
+import { CategoriesStore } from 'store/CategoryStore';
+import { FoodStore } from 'store/FoodStore';
+import { RootStateProvider } from 'store/RootState.Context';
+import { Categories } from 'components/Categories';
 
 let categoriesMockStore: CategoriesStore;
 let foodStoreMockStore: FoodStore;

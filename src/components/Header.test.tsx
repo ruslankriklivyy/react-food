@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import { CartStore } from '../store/CartStore';
-import { CategoriesStore } from '../store/CategoryStore';
-import { FoodStore } from '../store/FoodStore';
-import { Header } from './Header';
-import { RootStateProvider } from '../store/RootState.Context';
+import { CartStore } from 'store/CartStore';
+import { CategoriesStore } from 'store/CategoryStore';
+import { FoodStore } from 'store/FoodStore';
+import { Header } from 'components/Header';
+import { RootStateProvider } from 'store/RootState.Context';
 
 const mockOnHandleVisibleCart = jest.fn();
 let cartMockStore: CartStore;

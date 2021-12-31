@@ -1,9 +1,9 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
-import { SearchFood } from './SearchFood';
-import { FoodStore } from '../store/FoodStore';
-import { RootStateProvider } from '../store/RootState.Context';
-import { Food } from './Food';
+import { SearchFood } from 'components/SearchFood';
+import { FoodStore } from 'store/FoodStore';
+import { RootStateProvider } from 'store/RootState.Context';
+import { Food } from 'components/Food';
 
 const mockOnSearchFood = jest.fn();
 let foodMockStore: FoodStore;
